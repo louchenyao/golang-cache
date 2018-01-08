@@ -14,11 +14,13 @@ import (
 )
 
 func main() {
-	c, _ := goc.NewCache("fake", 233)
-	c.Set(233, "Hello goc!")
-	fmt.Println(c.Get(233))
-	fmt.Println(c.Get(234))
+	c, _ := goc.NewCache("fake", 1000)
+
+	c.Set("hi", "Hello goc!")
+	fmt.Println(c.Get("hi"))
+	fmt.Println(c.Get("hello"))
 }
+
 ~~~
 
 Output:

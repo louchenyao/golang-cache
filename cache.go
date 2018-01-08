@@ -11,9 +11,9 @@ func (e Error) Error() string {
 }
 
 type backendInterface interface {
-	set(key interface{}, val interface{})
-	get(key interface{}) (interface{}, error)
-	flush(key interface{})
+	set(key string, val interface{})
+	get(key string) (interface{}, error)
+	flush(key string)
 }
 
 type Cache struct {
@@ -34,12 +34,12 @@ func NewCache(backend string, maxCap int) (*Cache, error) {
 	return c, nil
 }
 
-func (c *Cache) Set(key interface{}, val interface{}) {
+func (c *Cache) Set(key string, val interface{}) {
 	c.countSet++
 	c.c.set(key, val)
 }
 
-func (c *Cache) Get(key interface{}) (interface{}, error) {
+func (c *Cache) Get(key string) (interface{}, error) {
 	c.countGet++
 	val, err := c.c.get(key)
 
