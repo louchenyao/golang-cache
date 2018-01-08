@@ -14,18 +14,17 @@ import (
 )
 
 func main() {
-	c, _ := goc.NewCache("fake", 1000)
+	c, _ := goc.NewCache("lru", 1024)
 
 	c.Set("hi", "Hello goc!")
 	fmt.Println(c.Get("hi"))
 	fmt.Println(c.Get("hello"))
 }
-
 ~~~
 
 Output:
 
 ~~~plain
-Hello goc! <nil>
-<nil> Cache miss!
+Hello goc! true
+<nil> false
 ~~~
