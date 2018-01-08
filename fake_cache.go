@@ -15,11 +15,11 @@ func (c *fakeCache) set(key string, val interface{}) {
 	c.val = val
 }
 
-func (c *fakeCache) get(key string) (interface{}, error) {
+func (c *fakeCache) get(key string) (interface{}, bool) {
 	if c.key == key {
-		return c.val, nil
+		return c.val, true
 	}
-	return nil, MissError{}
+	return nil, false
 }
 
 func (c *fakeCache) flush(key string) {
