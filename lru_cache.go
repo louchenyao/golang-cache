@@ -62,6 +62,7 @@ func (c *lruCache) gc() {
 	for i := 0; i < len(items) && i < c.maxCap; i++ {
 		c.m[items[i].key] = items[i]
 	}
+	c.cap = len(c.m)
 }
 
 func newLruCache(maxCap int) *lruCache {
