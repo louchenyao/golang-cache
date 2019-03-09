@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	c, _ := goc.NewCache("lru", 1024)
+	c, _ := goc.NewCache("clock", 1024)
 
 	c.Set("hi", "Hello goc!")
 	fmt.Println(c.Get("hi"))
@@ -28,3 +28,7 @@ Output:
 Hello goc! true
 <nil> false
 ~~~
+
+## TODO
+
+- [ ] Support genric type as key.
