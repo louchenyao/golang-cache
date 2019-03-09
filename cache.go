@@ -29,6 +29,8 @@ func NewCache(backend string, maxCap int) (*Cache, error) {
 		c.c = newFakeCache(maxCap)
 	case "lru":
 		c.c = newLruCache(maxCap)
+	case "clock":
+		c.c = newClockCache(maxCap)
 	default:
 		return nil, Error("Unknow backend: " + backend)
 	}
